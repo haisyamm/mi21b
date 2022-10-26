@@ -79,7 +79,7 @@ if(!empty($_GET['id'])){
                             echo "Administrator";
                         }else if($usr['level'] == 1){
                             echo "User";
-                        }else if($usr['level'] == 0){
+                        }else if($usr['level'] == 2){
                             echo "Developer";
                         } else{
                             echo "Not Found";
@@ -91,9 +91,9 @@ if(!empty($_GET['id'])){
                             echo "Staff";
                         }else if($usr['department'] == 1){
                             echo "Supervisor";
-                        }else if($usr['department'] == 0){
+                        }else if($usr['department'] == 2){
                             echo "Manager";
-                        }else if($usr['department'] == 1){
+                        }else if($usr['department'] == 3){
                             echo "Director";
                         }else{
                             echo "Not Found";
