@@ -1,6 +1,9 @@
 <?php 
 require_once "../User.php";
 $user = new User();
+if(!empty($_GET['id'])){ 
+$data = $user->get_user($_GET['id']);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,29 +26,79 @@ $user = new User();
           <form class="row g-3" method="POST">
             <div class="col-6">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php if(!empty($_GET['id'])){ echo $data['username']; } else {  } ?>">
             </div>
             <div class="col-md-6">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="email">
+              <input type="email" class="form-control" id="email" name="email" value="<?php if(!empty($_GET['id'])){ echo $data['email']; } else {  } ?>">
             </div>
             <div class="col-md-6">
               <label for="level" class="form-label">Level</label>
               <select id="level" name="level" class="form-select">
                 <option selected>Choose...</option>
-                <option value="0">Administrator</option>
-                <option value="1">User</option>
-                <option value="2">Developer</option>
+                <option value="0" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['level'] ==0){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?> >Administrator
+                </option>
+                <option value="1" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['level'] ==1){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>User</option>
+                <option value="2" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['level'] ==2){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>Developer</option>
               </select>
             </div>
             <div class="col-md-6">
               <label for="dep" class="form-label">Department</label>
               <select id="dep" id="dep" class="form-select">
                 <option selected>Choose...</option>
-                <option value="0">Staff</option>
-                <option value="1">Supervisor</option>
-                <option value="2">Manager</option>
-                <option value="3">Director</option>
+                <option value="0"  
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['department'] ==0){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>Staff</option>
+                <option value="1" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['department'] ==1){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>Supervisor</option>
+                <option value="2" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['department'] ==2){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>Manager</option>
+                <option value="3" 
+                <?php if(!empty($_GET['id'])){ 
+                            if($data['department'] ==3){
+                              echo "selected";
+                            }else{
+                              echo "";
+                            } 
+                          } ?>>Director</option>
               </select>
             </div>
             <div class="col-12">
@@ -66,6 +119,10 @@ if (isset($_POST['save'])) {
   $level    = $_POST['level'];
   $dep    = $_POST['dep'];
 
-  $user->insert($username,$email,$level,$dep);
+  if(!empty($_GET['id'])){ 
+    $user->update($username,$email,$level,$dep, $_GET['id']);
+  }else{
+    $user->insert($username,$email,$level,$dep);
+  }
 }     
 ?>
