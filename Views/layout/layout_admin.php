@@ -12,8 +12,8 @@
 
 <body>
 
-<?= $this->include('layout/navbar') ?>
-    
+	<?= $this->include('layout/navbar') ?>
+		
     <?= $this->renderSection('content') ?>
 
 	<footer class="jumbotron jumbotron-fluid mt-5 mb-0">
