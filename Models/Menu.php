@@ -12,6 +12,11 @@ class Menu extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields = ['menu_id', 'title', 'icon', 'link', 'parent_id', 'menu_level', 'is_active'];
 
+    
+    public function main_aktif(){
+        return $this->where('menu_level', 0)->where('is_active', 1)->findAll();
+    } 
+
     public function main_menu(){
         return $this->where('menu_level', 0)->findAll();
     }

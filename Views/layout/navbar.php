@@ -10,7 +10,7 @@ $menus = new Menu();
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-				<?php foreach($menus->main_menu() as $menu){?>
+				<?php foreach($menus->main_aktif() as $menu){?>
 					<?php $sub = $menus->sub_menu($menu['id']);?>
 					<?php if($sub){ ?>
 					<li class="nav-item dropdown">

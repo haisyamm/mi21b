@@ -89,58 +89,58 @@
 					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>	
-				<form method="POST" action="<?= base_url('setting/menu/$menu["id"]/update') ?>">
-				<div class="modal-body">
-					<div class="form-group">
-						<label for="menuid">Menu ID</label>
-						<input type="text" class="form-control" id="menu_id<?=$menu['id']?>" name="menu_id">
+				<form method="POST" action="<?= base_url('setting/menu/'.$menu["id"].'/update') ?>">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="menuid">Menu ID</label>
+							<input type="text" class="form-control" id="menu_id<?=$menu['id']?>" name="menu_id">
+						</div>
+						<div class="form-group">
+							<label for="title">Nama Menu</label>
+							<input type="text" class="form-control" id="title<?=$menu['id']?>" name="title">
+						</div>
+						<div class="form-group">
+							<label for="link">Link</label>
+							<input type="text" class="form-control" id="link<?=$menu['id']?>" name="link">
+						</div>
+						<div class="form-group">
+							<label for="icon">Icon</label>
+							<input type="text" class="form-control" id="icon<?=$menu['id']?>" name="icon">
+						</div>
+						<div class="form-group">
+							<label for="menu_level">Menu Level</label>
+							<select class="form-control" id="menu_level<?=$menu['id']?>" name="menu_level">
+								<option value="">Pilih..</option>
+								<option value="0">Main Menu</option>
+								<option value="1">Sub Menu</option>
+								<option value="2">Sub Sub Menu</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="parent_id">Group Menu</label>
+							<select class="form-control" id="parent_id<?=$menu['id']?>" name="parent_id">
+								<option value="0">Pilih..</option>
+								<?php foreach($main as $opt){?>
+								<option value="<?= $opt['id'] ?>"><?= $opt['title'] ?></option>
+								<?php } ?>
+							</select>
+						</div>
+						<div class="form-group form-check">
+							<input class="form-check-input" type="radio" name="is_active" id="is_active<?=$menu['id']?>" value="1">
+							<label class="form-check-label" for="is_active">
+								Yes
+							</label> 
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<input class="form-check-input " type="radio" name="is_active" id="is_active<?=$menu['id']?>" value="0">
+							<label class="form-check-label" for="is_active<?=$menu['id']?>">
+								No
+							</label>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="title">Nama Menu</label>
-						<input type="text" class="form-control" id="title<?=$menu['id']?>" name="title">
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
-					<div class="form-group">
-						<label for="link">Link</label>
-						<input type="text" class="form-control" id="link<?=$menu['id']?>" name="link">
-					</div>
-					<div class="form-group">
-						<label for="icon">Icon</label>
-						<input type="text" class="form-control" id="icon<?=$menu['id']?>" name="icon">
-					</div>
-					<div class="form-group">
-						<label for="menu_level">Menu Level</label>
-						<select class="form-control" id="menu_level<?=$menu['id']?>" name="menu_level">
-							<option value="">Pilih..</option>
-							<option value="0">Main Menu</option>
-							<option value="1">Sub Menu</option>
-							<option value="2">Sub Sub Menu</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="parent_id">Group Menu</label>
-						<select class="form-control" id="parent_id<?=$menu['id']?>" name="parent_id">
-							<option value="">Pilih..</option>
-							<?php foreach($main as $opt){?>
-							<option value="<?= $opt['id'] ?>"><?= $opt['title'] ?></option>
-							<?php } ?>
-						</select>
-					</div>
-					<div class="form-group form-check">
-						<input class="form-check-input" type="radio" name="is_active" id="is_active<?=$menu['id']?>" value="1">
-						<label class="form-check-label" for="is_active">
-							Yes
-						</label> 
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input class="form-check-input " type="radio" name="is_active" id="is_active<?=$menu['id']?>" value="0">
-						<label class="form-check-label" for="is_active<?=$menu['id']?>">
-							No
-						</label>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save</button>
-				</div>
 				</form>
 				</div>
 			</div>
@@ -170,48 +170,58 @@
 							<span aria-hidden="true">&times;</span>
 							</button>
 						</div>	
-						<form>
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="menuid">Menu ID</label>
-								<input type="text" class="form-control" id="menuid">
+						<form method="POST" action="<?= base_url('setting/menu/'.$sub["id"].'/update') ?>">
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="menuid">Menu ID</label>
+									<input type="text" class="form-control" id="menu_id<?=$sub['id']?>" name="menu_id">
+								</div>
+								<div class="form-group">
+									<label for="title">Nama Menu</label>
+									<input type="text" class="form-control" id="title<?=$sub['id']?>" name="title">
+								</div>
+								<div class="form-group">
+									<label for="link">Link</label>
+									<input type="text" class="form-control" id="link<?=$sub['id']?>" name="link">
+								</div>
+								<div class="form-group">
+									<label for="icon">Icon</label>
+									<input type="text" class="form-control" id="icon<?=$sub['id']?>" name="icon">
+								</div>
+								<div class="form-group">
+									<label for="menu_level">Menu Level</label>
+									<select class="form-control" id="menu_level<?=$sub['id']?>" name="menu_level">
+										<option value="">Pilih..</option>
+										<option value="0">Main Menu</option>
+										<option value="1">Sub Menu</option>
+										<option value="2">Sub Sub Menu</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="parent_id">Group Menu</label>
+									<select class="form-control" id="parent_id<?=$sub['id']?>" name="parent_id">
+										<option value="0">Pilih..</option>
+										<?php foreach($main as $opt){?>
+										<option value="<?= $opt['id'] ?>"><?= $opt['title'] ?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="form-group form-check">
+									<input class="form-check-input" type="radio" name="is_active" id="is_active<?=$sub['id']?>" value="1">
+									<label class="form-check-label" for="is_active">
+										Yes
+									</label> 
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<input class="form-check-input " type="radio" name="is_active" id="is_active<?=$sub['id']?>" value="0">
+									<label class="form-check-label" for="is_active<?=$menu['id']?>">
+										No
+									</label>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="menu_name">Nama Menu</label>
-								<input type="text" class="form-control" id="menu_name">
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Save</button>
 							</div>
-							<div class="form-group">
-								<label for="menu_level">Menu Level</label>
-								<select class="form-control" id="menu_level">
-									<option value="">Pilih..</option>
-									<option value="0">Main Menu</option>
-									<option value="1">Sub Menu</option>
-									<option value="2">Sub Sub Menu</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="menu_level">Group Menu</label>
-								<select class="form-control" id="menu_level">
-									<option value="">Pilih..</option>
-									<option value="0">Main Menu</option>
-								</select>
-							</div>
-							<div class="form-group form-check">
-								<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-								<label class="form-check-label" for="exampleRadios1">
-									Yes
-								</label> 
-								&nbsp;&nbsp;&nbsp;&nbsp;
-								<input class="form-check-input " type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-								<label class="form-check-label" for="exampleRadios2">
-									No
-								</label>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Save</button>
-						</div>
 						</form>
 						</div>
 					</div>
@@ -223,7 +233,7 @@
 						</div>
 						<div class="col-2">
 							<p class="text-md-right">
-								<a class="btn btn-outline-warning" href="<?= base_url('setting/menu/'.$sub['id'].'/edit') ?>" role="button" data-toggle="modal" data-target="#exampleModal<?=$sub['id']?>">Edit</a>
+								<a class="btn btn-outline-warning" href="#" role="button" data-toggle="modal" data-target="#exampleModal<?=$sub['id']?>" onclick="getData(<?=$sub['id']?>)">Edit</a>
 								<a class="btn btn-outline-danger" href="<?= base_url('setting/menu/'.$sub['id'].'/delete') ?>"  
 								onclick="return confirm('Anda yakin ingin menghapus menu <?= $sub['title'] ?>');">Delete</a>
 							</p>
@@ -244,14 +254,14 @@
 			async : false,
 			dataType : 'json',
 			success : function(data){
-				console.log(data);
+				console.log('[value='+data['is_active']+']');
 				$('#menu_id'+id).val(data['menu_id']);
 				$('#title'+id).val(data['title']);
 				$('#icon'+id).val(data['icon']);
 				$('#link'+id).val(data['link']);
 				$('#parent_id'+id).val(data['parent_id']).change();
-				$('#menu_level'+id).val(data['menu_level']).change();
-				$('#is_active'+id).val(data['is_active']).is(':checked') === true;
+				$('#menu_level'+id).val(data['menu_level']).prop('selected', true);
+				$('#is_active'+id).filter('[value='+data['is_active']+']').prop('checked', true);
 			}      
 		});
 	}

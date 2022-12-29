@@ -54,10 +54,10 @@ class SettingMenu extends BaseController
         $rules = ['menu_id' => 'required', 'title' => 'required', 'link' => 'required'];
         $validation->setRules($rules);
         $isDataValid = $validation->withRequest($this->request)->run();
-        dd($this->request->getPost());
+        // dd($this->request->getPost());
         // jika data valid, simpan ke database
         if($isDataValid){
-            $this->menuModel->update([
+            $this->menuModel->update($id,[
                 "menu_id" => $this->request->getPost('menu_id'),
                 "title" => $this->request->getPost('title'),
                 "link" => $this->request->getPost('link'),
@@ -65,9 +65,16 @@ class SettingMenu extends BaseController
                 "menu_level" => $this->request->getPost('menu_level'),
                 "parent_id" => $this->request->getPost('parent_id'),
                 "is_active" => $this->request->getPost('is_active'),
-            ])->where('id', $id);
+            ]);
             return redirect('setting/menu');
         }
+
+        return redirect('setting/menu');
+    }
+
+    public function edit($id){
+        $data = $this->menuModel->find($id);
+        return json_encode($data);
     }
 
     public function delete($id){
